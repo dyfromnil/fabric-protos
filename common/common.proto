@@ -5,7 +5,6 @@
 syntax = "proto3";
 
 option go_package = "github.com/hyperledger/fabric-protos-go/common";
-option java_package = "org.hyperledger.fabric.protos.common";
 
 package common;
 
@@ -149,9 +148,8 @@ message Block {
 // The block header is hashed using the configured chain hashing algorithm
 // over the ASN.1 encoding of the BlockHeader
 message BlockHeader {
-    uint64 number = 1; // The position in the blockchain
-    bytes previous_hash = 2; // The hash of the previous block header
-    bytes data_hash = 3; // The hash of the BlockData, by MerkleTree
+    repeated bytes previous_hash = 1; // The hash of the previous block header
+    bytes data_hash = 2; // The hash of the BlockData, by MerkleTree
 }
 
 message BlockData {
